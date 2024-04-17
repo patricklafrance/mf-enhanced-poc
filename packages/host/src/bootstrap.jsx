@@ -3,6 +3,8 @@ import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { init, loadRemote } from "@module-federation/enhanced/runtime";
 
+import { HelloWorld } from "remote1/HelloWorld.jsx";
+
 // const fallbackPlugin = function () {
 //   return {
 //     name: 'fallback-plugin',
@@ -28,52 +30,33 @@ import { init, loadRemote } from "@module-federation/enhanced/runtime";
 //     shared: {
 //         "react": {
 //             singleton: true,
-//             eager: true,
-//             version: "18.2.0"
+//             eager: true
 //         },
 //         "react-dom": {
 //             singleton: true,
-//             eager: true,
-//             version: "18.2.0"
+//             eager: true
+//         },
+//         "lodash": {
+//             singleton: true,
+//             eager: true
 //         }
 //     }
 //     // plugins: [fallbackPlugin()]
 // });
 
-const { HelloWorld } = loadRemote("remote1/HelloWorld.jsx").catch(() => console.log("failed to load remote 1"));
-const { sayHello } = loadRemote("remote2/sayHello.js").catch(() => console.log("failed to load remote 2"));
+// let HelloWorld;
 
-// ---------------------
+// const module1 = await loadRemote("remote1/HelloWorld.jsx").catch(() => console.log("failed to load remote 1"));
+// if (module1) {
+//     HelloWorld = module1.HelloWorld;
+// }
 
-// const fallbackPlugin = function () {
-//   return {
-//     name: 'fallback-plugin',
-//     errorLoadRemote(args) {
-//       const fallback = 'fallback';
-//       return fallback;
-//     },
-//   };
-// };
+// let sayHello;
 
-// init({
-//   name: '@demo/app-main',
-//   remotes: [
-//     {
-//       name: '@demo/app2',
-//       entry: 'http://localhost:3006/remoteEntry.js',
-//       alias: 'app2',
-//     },
-//   ],
-//   plugins: [fallbackPlugin()],
-// });
-
-// loadRemote('app2/un-existed-module').then((mod) => {
-//     console.log(mod);
-
-// //   expect(mod).toEqual('fallback');
-// });
-
-// ---------------------
+// const module2 = await loadRemote("remote2/sayHello.js").catch(() => console.log("failed to load remote 2"));
+// if (module2) {
+//     sayHello = module2.sayHello;
+// }
 
 const root = createRoot(document.getElementById("root"));
 
@@ -82,7 +65,7 @@ root.render(
         <>
             <App />
             {HelloWorld && <HelloWorld />}
-            {/* <div>{sayHello()}</div> */}
+            {/* {sayHello && <div>{sayHello()}</div>} */}
         </>
     </StrictMode>
 );

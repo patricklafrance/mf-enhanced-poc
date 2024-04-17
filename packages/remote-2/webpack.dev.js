@@ -49,6 +49,11 @@ export default {
             filename: "remoteEntry.js",
             exposes: {
               "./sayHello.js": "./src/sayHello.js"
+            },
+            shared: {
+                "lodash": {
+                  singleton: true
+                }
             }
         })
     ]

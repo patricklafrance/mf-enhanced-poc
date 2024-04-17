@@ -1,3 +1,5 @@
+import { join } from "lodash";
+
 export function sayHello() {
-    return "Hello from remote-2";
+    return join(["Hello", "from", "remote-2"], "-");
 }

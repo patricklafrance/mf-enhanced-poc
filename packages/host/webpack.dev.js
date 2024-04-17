@@ -58,9 +58,12 @@ export default {
     plugins: [
         new ModuleFederation.ModuleFederationPlugin({
             name: "host",
+            // remotes: {
+            //     "remote1": "remote1@http://localhost:8081/mf-manifest.json",
+            //     "remote2": "remote2@http://localhost:8082/mf-manifest.json"
+            // },
             remotes: {
-                "remote1": "remote1@http://localhost:8081/mf-manifest.json",
-                "remote2": "remote2@http://localhost:8082/mf-manifest.json"
+                "remote1": "remote1@http://localhost:8081/remoteEntry.js",
             },
             shared: {
                 "react": {
@@ -70,9 +73,14 @@ export default {
                 "react-dom": {
                     singleton: true,
                     eager: true
+                },
+                "lodash": {
+                    singleton: true,
+                    eager: true
                 }
             },
-            runtimePlugins: [require.resolve("./fallbackPlugin.js")]
+            // runtimePlugins: [require.resolve("./fallbackPlugin.js")]
+            runtimePlugins: [require.resolve("./offlineRemotePlugin.js")]
             // runtimePlugins: [fallbackPlugin()]
             // runtimePlugins: [require.resolve("./myFederationPlugin.js")]
         }),

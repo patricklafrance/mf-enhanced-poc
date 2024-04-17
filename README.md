@@ -65,3 +65,25 @@ The remote module entries are available at:
 - For React Refresh to work properly, the host application and every remote modules must configure webpack `output.uniqueName` option.
 
 - When using the `init` function from `@module-federation/enhanced/runtime` instead of the webpack `ModuleFederationPlugin` plugin, even if configured, the shared dependencies are not recycled. For example, if the host and a remote needs React `18.2.0`, the dependency will be bundled twice.
+
+- When using webpack `ModuleFederationPlugin` plugin, plugin hooks like `errorLoadRemote` will not be called for remotes that are called with `loadRemote`, it will only be called for remotes called with an `import` statement.
+
+- When using webpack `ModuleFederationPlugin` plugin, `ModuleFederationPlugin` will throw even if `errorLoadRemote` is present and handling the error if the remote is configuration points to a manifest file. If the remote configuration points to `remoteEntry.js` instead, it works fine.
+
+In short, the following works:
+
+```js
+remotes: {
+    "remote1": "remote1@http://localhost:8081/remoteEntry.js"
+}
+```
+
+but the following doesn't work:
+
+```js
+remotes: {
+    "remote1": "remote1@http://localhost:8081/mf-manifest.json"
+}
+```
+
+

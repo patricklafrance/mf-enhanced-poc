@@ -57,6 +57,9 @@ export default {
               },
               "react-dom": {
                 singleton: true
+              },
+              "lodash": {
+                singleton: true
               }
             }
         }),

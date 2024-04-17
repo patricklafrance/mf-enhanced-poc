@@ -5,6 +5,10 @@ import ReactRefreshWebpackPlugin from "@pmmmwh/react-refresh-webpack-plugin";
 import ModuleFederation from "@module-federation/enhanced/webpack";
 import { createRequire } from 'node:module';
 
+import packageJson from "./package.json" assert { type: "json" };
+
+const dependencies = packageJson.dependencies;
+
 const require = createRequire(import.meta.url);
 
 const fallbackPlugin = function () {
@@ -101,7 +105,8 @@ export default {
                     eager: true
                 },
                 "useless-lib": {
-                    singleton: true
+                    singleton: true,
+                    requiredVersion: ">=2.0.0"
                     // eager: true
                 }
             }

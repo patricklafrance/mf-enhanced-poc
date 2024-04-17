@@ -44,25 +44,28 @@ export default {
             }
         ]
     },
-    plugins: [
-        new ModuleFederation.ModuleFederationPlugin({
-            name: "remote1",
-            filename: "remoteEntry.js",
-            exposes: {
-              "./HelloWorld.jsx": "./src/HelloWorld.jsx"
+plugins: [
+    new ModuleFederation.ModuleFederationPlugin({
+        name: "remote1",
+        filename: "remoteEntry.js",
+        exposes: {
+            "./HelloWorld.jsx": "./src/HelloWorld.jsx"
+        },
+        shared: {
+            "react": {
+                singleton: true
             },
-            shared: {
-              "react": {
+            "react-dom": {
                 singleton: true
-              },
-              "react-dom": {
+            },
+            "lodash": {
                 singleton: true
-              },
-              "lodash": {
+            },
+            "useless-lib": {
                 singleton: true
-              }
             }
-        }),
-        new ReactRefreshWebpackPlugin()
-    ]
+        }
+    }),
+    new ReactRefreshWebpackPlugin()
+]
 };

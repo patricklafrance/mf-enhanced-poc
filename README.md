@@ -95,8 +95,6 @@ Error message:
 TypeError: Failed to fetch
 ```
 
-## Issues
-
-- When a remote is offline, there's currently no good way for an app to provide a good UX. The React application will not render until all the remotes connection resolves, therefore, while Module Federation is trying to import the remotes (which is longer when a remote is unavailable), the user is stuck with a blank screen.
+- The best way so far seems to use the `init` function to define the remotes, and webpack `ModuleFederationPlugin` plugin to define the shared dependencies.
 
 

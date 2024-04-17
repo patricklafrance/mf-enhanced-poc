@@ -56,15 +56,37 @@ export default {
         ]
     },
     plugins: [
+        // new ModuleFederation.ModuleFederationPlugin({
+        //     name: "host",
+        //     // remotes: {
+        //     //     "remote1": "remote1@http://localhost:8081/mf-manifest.json",
+        //     //     "remote2": "remote2@http://localhost:8082/mf-manifest.json"
+        //     // },
+        //     remotes: {
+        //         "remote1": "remote1@http://localhost:8081/remoteEntry.js",
+        //         "remote2": "remote2@http://localhost:8082/remoteEntry.js"
+        //     },
+        //     shared: {
+        //         "react": {
+        //             singleton: true,
+        //             eager: true
+        //         },
+        //         "react-dom": {
+        //             singleton: true,
+        //             eager: true
+        //         },
+        //         "lodash": {
+        //             singleton: true,
+        //             eager: true
+        //         }
+        //     },
+        //     // runtimePlugins: [require.resolve("./fallbackPlugin.js")]
+        //     runtimePlugins: [require.resolve("./offlineRemotePlugin.js")]
+        //     // runtimePlugins: [fallbackPlugin()]
+        //     // runtimePlugins: [require.resolve("./myFederationPlugin.js")]
+        // }),
         new ModuleFederation.ModuleFederationPlugin({
             name: "host",
-            // remotes: {
-            //     "remote1": "remote1@http://localhost:8081/mf-manifest.json",
-            //     "remote2": "remote2@http://localhost:8082/mf-manifest.json"
-            // },
-            remotes: {
-                "remote1": "remote1@http://localhost:8081/remoteEntry.js"
-            },
             shared: {
                 "react": {
                     singleton: true,
@@ -77,12 +99,12 @@ export default {
                 "lodash": {
                     singleton: true,
                     eager: true
+                },
+                "useless-lib": {
+                    singleton: true
+                    // eager: true
                 }
-            },
-            // runtimePlugins: [require.resolve("./fallbackPlugin.js")]
-            runtimePlugins: [require.resolve("./offlineRemotePlugin.js")]
-            // runtimePlugins: [fallbackPlugin()]
-            // runtimePlugins: [require.resolve("./myFederationPlugin.js")]
+            }
         }),
         new HtmlWebpackPlugin({
             template: "./public/index.html"

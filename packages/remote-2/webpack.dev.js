@@ -52,7 +52,10 @@ export default {
             },
             shared: {
                 "lodash": {
-                  singleton: true
+                    singleton: true
+                },
+                "useless-lib": {
+                    singleton: true
                 }
             }
         })

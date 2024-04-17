@@ -1,7 +1,7 @@
 // ts-check
 
 import HtmlWebpackPlugin from "html-webpack-plugin";
-import ModuleFederationPlugin from "webpack/lib/container/ModuleFederationPlugin.js";
+import ModuleFederation from "@module-federation/enhanced/webpack";
 import path from "path";
 
 /** @type {import("webpack").Configuration} */
@@ -41,20 +41,19 @@ export default {
         ]
     },
     plugins: [
-        new ModuleFederationPlugin({
+        new ModuleFederation.ModuleFederationPlugin({
             name: "host",
             remotes: {
-                remote1: "remote1@http://localhost:8081/remoteEntry.js",
-                remote2: "remote2@http://localhost:8082/remoteEntry.js"
+                remote1: "remote1@http://localhost:8081/remoteEntry.js"
             },
             shared: {
                 "react": {
                   singleton: true,
-                  strictVersion: true
+                  eager: true
                 },
                 "react-dom": {
                   singleton: true,
-                  strictVersion: true
+                  eager: true
                 }
             }
         }),

@@ -1,14 +1,9 @@
-import { lazy } from "react";
-
-const Remote1HelloWorld = lazy(() => import("remote1/HelloWorld.jsx"));
-const Remote2HelloWorld = lazy(() => import("remote2/HelloWorld.jsx"));
+import { Suspense } from "react";  
 
 export function App() {
     return (
-        <>
+        <Suspense fallback={<div>Loading....</div>}>
             <div>Hello from host application</div>
-            <Remote1HelloWorld />
-            <Remote2HelloWorld />
-        </>
+        </Suspense>
     );
 }

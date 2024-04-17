@@ -1,6 +1,6 @@
 // ts-check
 
-import ModuleFederationPlugin from "webpack/lib/container/ModuleFederationPlugin.js";
+import ModuleFederation from "webpack/lib/container/ModuleFederationPlugin";
 import path from "path";
 
 /** @type {import("webpack").Configuration} */
@@ -40,21 +40,11 @@ export default {
         ]
     },
     plugins: [
-        new ModuleFederationPlugin({
+        new ModuleFederation.ModuleFederationPlugin({
             name: "remote2",
             filename: "remoteEntry.js",
             exposes: {
-              "./HelloWorld.jsx": "./src/HelloWorld.jsx"
-            },
-            shared: {
-              "react": {
-                singleton: true,
-                strictVersion: true
-              },
-              "react-dom": {
-                singleton: true,
-                strictVersion: true
-              }
+              "./sayHello.js": "./src/sayHello.js"
             }
         })
     ]

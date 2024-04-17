@@ -59,3 +59,9 @@ Open a browser at http://localhost:8080/.
 The remote module entries are available at:
 - http://localhost:8081/remoteEntry.js for remote-1
 - http://localhost:8082/remoteEntry.js for remote-2
+
+## Findings
+
+- For React Refresh to work properly, the host application and every remote modules must configure webpack `output.uniqueName` option.
+
+- When using the `init` function from `@module-federation/enhanced/runtime` instead of the webpack `ModuleFederationPlugin` plugin, even if configured, the shared dependencies are not recycled. For example, if the host and a remote needs React `18.2.0`, the dependency will be bundled twice.

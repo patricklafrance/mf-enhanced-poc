@@ -1,9 +1,8 @@
 // ts-check
 
-import ModuleFederationPlugin from "webpack/lib/container/ModuleFederationPlugin.js";
+import ModuleFederation from "@module-federation/enhanced/webpack";
 
 /** @type {import("webpack").Configuration} */
-
 export default {
     mode: "development",
     target: "web",
@@ -11,6 +10,7 @@ export default {
     entry: "./src/index.js",
     output: {
         publicPath: "http://localhost:8082/",
+        uniqueName: "remote2"
     },
     devServer: {
         port: 8082,
@@ -18,7 +18,8 @@ export default {
         // Otherwise hot reload in the host failed with a CORS error
         headers: {
           "Access-Control-Allow-Origin": "*"
-        }
+        },
+        hot: true
     },
     module: {
         rules: [
@@ -43,21 +44,11 @@ export default {
         ]
     },
     plugins: [
-        new ModuleFederationPlugin({
+        new ModuleFederation.ModuleFederationPlugin({
             name: "remote2",
             filename: "remoteEntry.js",
             exposes: {
-              "./HelloWorld.jsx": "./src/HelloWorld.jsx"
-            },
-            shared: {
-              "react": {
-                singleton: true,
-                strictVersion: true
-              },
-              "react-dom": {
-                singleton: true,
-                strictVersion: true
-              }
+              "./sayHello.js": "./src/sayHello.js"
             }
         })
     ]

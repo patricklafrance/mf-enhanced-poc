@@ -3,13 +3,16 @@
   "version": "1.0.0",
   "description": "Template to create POC related to Webpack Module Federation",
   "private": true,
+  "type": "module",
   "scripts": {
     "dev": "pnpm -r --parallel dev",
     "build": "pnpm -r --parallel build",
     "serve-build": "pnpm -r -parallel serve-build",
     "reset": "pnpm run \"/^reset:.*/\"",
     "reset:node-modules": "pnpm -r --include-workspace-root --parallel exec pnpm dlx rimraf node_modules",
-    "reset:lock-file": "pnpm dlx rimraf pnpm-lock.yaml"
+    "reset:lock-file": "pnpm dlx rimraf pnpm-lock.yaml",
+    "list-outdated-deps": "pnpm outdated -r --format list !eslint",
+    "update-outdated-deps": "pnpm update -r --latest !eslint"
   },
   "keywords": [],
   "license": "ISC"

@@ -86,4 +86,17 @@ remotes: {
 }
 ```
 
+```
+Error
+[ Federation Runtime ]: [ Federation Runtime ]: [ Federation Runtime ]: [ Federation Runtime ]: [ Federation Runtime ]: [ Federation Runtime ]: [ Federation Runtime ]: [ Federation Runtime ]: [ Federation Runtime ]: [ Federation Runtime ]: [ Federation Runtime ]: Failed to get manifestJson for remote1. The manifest URL is http://localhost:8081/mf-manifest.json. Please ensure that the manifestUrl is accessible.
+
+Error message:
+
+TypeError: Failed to fetch
+```
+
+## Issues
+
+- When a remote is offline, there's currently no good way for an app to provide a good UX. The React application will not render until all the remotes connection resolves, therefore, while Module Federation is trying to import the remotes (which is longer when a remote is unavailable), the user is stuck with a blank screen.
+
 

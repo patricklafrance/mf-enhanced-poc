@@ -17,6 +17,14 @@ export default function () {
   
     return {
       name: 'offline-remote-plugin',
+      beforeInit(args) {
+        console.log("Initiating MF");
+
+        // const loadingElement = document.getElementById("loading");
+        // loadingElement.style.display = "block";
+
+        return args;
+      },
       errorLoadRemote({id, error, from, origin}) {
         console.error(id, 'offline');
         const pg = function () {

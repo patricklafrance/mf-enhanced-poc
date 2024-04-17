@@ -7,15 +7,15 @@ import { createRequire } from 'node:module';
 
 const require = createRequire(import.meta.url);
 
-// const fallbackPlugin = function () {
-//   return {
-//     name: 'fallback-plugin',
-//     errorLoadRemote(args) {
-//       const fallback = 'fallback';
-//       return fallback;
-//     },
-//   };
-// };
+const fallbackPlugin = function () {
+  return {
+    name: 'fallback-plugin',
+    errorLoadRemote(args) {
+      const fallback = 'fallback';
+      return fallback;
+    },
+  };
+};
 
 /** @type {import("webpack").Configuration} */
 export default {
@@ -73,6 +73,7 @@ export default {
                 }
             },
             runtimePlugins: [require.resolve("./fallbackPlugin.js")]
+            // runtimePlugins: [fallbackPlugin()]
             // runtimePlugins: [require.resolve("./myFederationPlugin.js")]
         }),
         new HtmlWebpackPlugin({

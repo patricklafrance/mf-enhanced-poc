@@ -66,9 +66,7 @@ The remote module entries are available at:
 
 - When using the `init` function from `@module-federation/enhanced/runtime` instead of the webpack `ModuleFederationPlugin` plugin, for the shared dependencies to be recycled, they must be configured as followed: https://module-federation.io/guide/basic/runtime.html#loadshare.
 
-- When using webpack `ModuleFederationPlugin` plugin, plugin hooks like `errorLoadRemote` will not be called for remotes that are called with `loadRemote`, it will only be called for remotes called with an `import` statement.
-
-- When using webpack `ModuleFederationPlugin` plugin, `ModuleFederationPlugin` will throw even if `errorLoadRemote` is present and handling the error if the remote is configuration points to a manifest file. If the remote configuration points to `remoteEntry.js` instead, it works fine.
+- When using webpack `ModuleFederationPlugin` plugin, `ModuleFederationPlugin` will throw even if `errorLoadRemote` is present and handling the error if the remote entry is `mf-manifest.json`. If the remote entry is `remoteEntry.js` instead, it works fine.
 
 In short, the following works:
 

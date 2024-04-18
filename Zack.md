@@ -239,9 +239,9 @@ The following will also fail:
 new ModuleFederation.ModuleFederationPlugin({
     runtimePlugins: [{
         name: "test-plugin",
-        errorLoadRemote: () => {
-            console.log("error loading remote!")
-        }     
+        errorLoadRemote: ({ id }) => {
+            console.log(`Error loading remote: ${id}`)
+        }
     }]
 })
 ```

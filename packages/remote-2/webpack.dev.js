@@ -2,10 +2,6 @@
 
 import ModuleFederation from "@module-federation/enhanced/webpack";
 
-import packageJson from "./package.json" assert { type: "json" };
-
-const dependencies = packageJson.dependencies;
-
 /** @type {import("webpack").Configuration} */
 export default {
     mode: "development",
@@ -59,8 +55,7 @@ export default {
                     singleton: true
                 },
                 "useless-lib": {
-                    singleton: true,
-                    requiredVersion: ">=2.0.0"
+                    singleton: true
                 }
             }
         })

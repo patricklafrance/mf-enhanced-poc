@@ -3,10 +3,6 @@
 import ModuleFederation from "@module-federation/enhanced/webpack";
 import ReactRefreshWebpackPlugin from "@pmmmwh/react-refresh-webpack-plugin";
 
-import packageJson from "./package.json" assert { type: "json" };
-
-const dependencies = packageJson.dependencies;
-
 /** @type {import("webpack").Configuration} */
 export default {
     mode: "development",
@@ -66,9 +62,7 @@ plugins: [
                 singleton: true
             },
             "useless-lib": {
-                singleton: true,
-                requiredVersion: ">=2.1.0"
-                // requiredVersion: ">=3.0.0"
+                singleton: true
             }
         }
     }),

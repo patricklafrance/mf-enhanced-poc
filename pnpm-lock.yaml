@@ -20,8 +20,8 @@ importers:
         specifier: 18.2.0
         version: 18.2.0(react@18.2.0)
       useless-lib:
-        specifier: 2.0.1
-        version: 2.0.1
+        specifier: 2.1.0
+        version: 2.1.0
     devDependencies:
       '@module-federation/enhanced':
         specifier: 0.1.6
@@ -66,8 +66,8 @@ importers:
         specifier: 18.2.0
         version: 18.2.0(react@18.2.0)
       useless-lib:
-        specifier: 2.1.0
-        version: 2.1.0
+        specifier: 3.0.0
+        version: 3.0.0
     devDependencies:
       '@module-federation/enhanced':
         specifier: 0.1.6
@@ -3544,6 +3544,10 @@ packages:
 
   /useless-lib@2.1.0:
     resolution: {integrity: sha512-HxMJ/lOLgSDcQNkI0niuCKzft4IfFy/jyF0ovmEpZvI35zSu+cytwUvj5yRfEM94ABFcpIk96BGojv0QwXFm6A==}
+    dev: false
+
+  /useless-lib@3.0.0:
+    resolution: {integrity: sha512-rmy0U5jF1Nsq3NQWVSjB/hM7NSvdwlKbxk39cIyTp+4yoE1gychkMMOb1A4+IaEakczwWWeRNSfatDfH6tTAeg==}
     dev: false
 
   /util-deprecate@1.0.2:

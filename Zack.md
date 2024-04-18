@@ -2,7 +2,7 @@
 
 ## Importing `ModuleFederationPlugin`
 
-The [documentation](https://module-federation.io/guide/basic/webpack.html#register-the-plugin) mentions to import the plugin as follows:
+The [documentation](https://module-federation.io/guide/basic/webpack.html#register-the-plugin) mentions to import the plugin as follow:
 
 ```js
 import { ModuleFederationPlugin } from '@module-federation/enhanced/webpack';
@@ -32,7 +32,7 @@ new ModuleFederation.ModuleFederationPlugin({
 
 ## `errorLoadRemote` and `mf-manifest.json`
 
-When a runtime plugin is configured with the `init` function and `mf-manifest.json` remote entry, the `errorLoadRemote` hook is called as expected when a failed attempt to load an offline remote is executed with `loadRemote` and the application is rendered without any exception:
+When a runtime plugin is configured with the `init` function and the remote is configured with `mf-manifest.json` as a remote entry, the `errorLoadRemote` hook is called as expected when an attempt to load the remote is done with `loadRemote` and it fails:
 
 ```js bootstrap.jsx
 init({
@@ -41,11 +41,7 @@ init({
         {
             name: "remote1",
             entry: "http://localhost:8081/mf-manifest.json"
-        },
-        {
-            name: "remote2",
-            entry: "http://localhost:8082/mf-manifest.json"
-        },
+        }
     ],
     plugins: [{
         name: "test-plugin",
@@ -59,7 +55,7 @@ init({
 loadRemote("remote1/HelloWorld.jsx").then(mod => console.log("Module loaded!", mod));
 ```
 
-Furthermore, when a runtime plugin is configured with the webpack `ModuleFederationPlugin` plugin and `remoteEntry.js` remote entry, the `errorLoadRemote` hook is called as expected when a failed attempt to load an offline remote is executed with an `import` statement and the application is rendered without any error:
+When a runtime plugin is configured with the webpack `ModuleFederationPlugin` plugin and the remote is configured with `remoteEntry.js` as a remote entry, the `errorLoadRemote` hook is called as expected when an attempt to load the remote is done with an `import` statement and it fail:
 
 ```js offlineRemotePlugin.js
 export default function () {
@@ -114,13 +110,13 @@ new ModuleFederation.ModuleFederationPlugin({
 import { HelloWorld } from "remote1/HelloWorld.jsx";
 ```
 
-With the plugin, it also works as expected when there's a failed attempt to load an offline remote with `loadRemote`:
+It also works as expected with `ModuleFederationPlugin` when there's a failed attempt to load an offline remote with `loadRemote`:
 
 ```js
 loadRemote("remote1/HelloWorld.jsx").then(mod => console.log("Module loaded!", mod));
 ```
 
-However, when the plugin remote configuration is targeting `mf-manifest.json` files as entry point, the `errorLoadRemote` hook is NOT called:
+However, when the plugin remote configuration is configured with `mf-manifest.json` as an entry point, the `errorLoadRemote` hook is NOT called:
 
 ```js webpack.config.js
 import ModuleFederation from "@module-federation/enhanced/webpack";
@@ -137,7 +133,7 @@ new ModuleFederation.ModuleFederationPlugin({
 })
 ```
 
-AND the application crash with the following error:
+Instead, the application crash with the following error:
 
 ```bash
 [ Federation Runtime ]: [ Federation Runtime ]: [ Federation Runtime ]: [ Federation Runtime ]: [ Federation Runtime ]: [ Federation Runtime ]: [ Federation Runtime ]: [ Federation Runtime ]: [ Federation Runtime ]: [ Federation Runtime ]: [ Federation Runtime ]: Failed to get manifestJson for remote1. The manifest URL is http://localhost:8081/mf-manifest.json. Please ensure that the manifestUrl is accessible.

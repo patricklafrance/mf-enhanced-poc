@@ -301,6 +301,6 @@ So I tried with `init` and `loadRemote` but I still get the same issue, the host
 
 I went through this with Yokota on the MF Discord channel: https://discord.com/channels/1055442562959290389/1230213882061262909/1230243060848398539
 
-The main reasons we went with "dynamic remote containers" with MF 1.0 was to gracefully support offline remotes. Now with MF 1.5, we can go back to `ModuleFederationPlugin` and use the `errorLoadRemote` hook to gracefully handle offline remote. However, there is still an issue... When at least one remote is offline, it seems like `ModuleFederationPlugin` takes longer to resolve the shared dependencies and my users are stuck with a blank screen for 4-5 seconds. Is there a way to circumvent this issue?
+The main reason we went with "dynamic remote containers" with MF 1.0 was to gracefully support offline remotes. Now with MF 1.5, we can go back to `ModuleFederationPlugin` and use the `errorLoadRemote` hook to gracefully handle offline remote. However, there is still an issue... When at least one remote is offline, it seems like `ModuleFederationPlugin` takes longer to resolve the shared dependencies and my users are stuck with a blank screen for 4-5 seconds. Is there a way to circumvent this issue?
 
 

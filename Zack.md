@@ -32,7 +32,7 @@ new ModuleFederation.ModuleFederationPlugin({
 
 ## `errorLoadRemote` and `mf-manifest.json`
 
-When a runtime plugin is configured with the `init` function and the remote is configured with `mf-manifest.json` as a remote entry, the `errorLoadRemote` hook is called as expected when an attempt to load the remote is done with `loadRemote` and it fails:
+When a runtime plugin is configured with the `init` function, and the remote is configured with `mf-manifest.json` as a remote entry, the `errorLoadRemote` hook is called as expected when an attempt to load the remote is done with `loadRemote` and it fails:
 
 ```js bootstrap.jsx
 init({
@@ -55,7 +55,7 @@ init({
 loadRemote("remote1/HelloWorld.jsx").then(mod => console.log("Module loaded!", mod));
 ```
 
-When a runtime plugin is configured with the webpack `ModuleFederationPlugin` plugin and the remote is configured with `remoteEntry.js` as a remote entry, the `errorLoadRemote` hook is called as expected when an attempt to load the remote is done with an `import` statement and it fail:
+When a runtime plugin is configured with the webpack `ModuleFederationPlugin` plugin, and the remote is configured with `remoteEntry.js` as a remote entry, the `errorLoadRemote` hook is called as expected when an attempt to load the remote is done with an `import` statement and it fails:
 
 ```js offlineRemotePlugin.js
 export default function () {
@@ -116,7 +116,7 @@ It also works as expected with `ModuleFederationPlugin` when there's a failed at
 loadRemote("remote1/HelloWorld.jsx").then(mod => console.log("Module loaded!", mod));
 ```
 
-However, when the plugin remote configuration is configured with `mf-manifest.json` as an entry point, the `errorLoadRemote` hook is NOT called:
+However, when using ``ModuleFederationPlugin` and the remote is configured with `mf-manifest.json` as an entry point, the `errorLoadRemote` hook is NOT called:
 
 ```js webpack.config.js
 import ModuleFederation from "@module-federation/enhanced/webpack";
@@ -145,7 +145,7 @@ TypeError: Failed to fetch
 
 ## Configuring a runtime plugin with `ModuleFederationPlugin`
 
-Strangely, the only way to configure a runtime plugin with webpack `ModuleFederationPlugin` plugin, seems to be using `require.resolve`:
+Strangely, the only way to configure a runtime plugin with webpack `ModuleFederationPlugin` plugin, seems to be by using `require.resolve`:
 
 ```js webpack.config.js
 new ModuleFederation.ModuleFederationPlugin({
@@ -297,7 +297,7 @@ You mentioned the following:
 
 > the plugin just inits the runtime, if you use the runtime library, youre the plugin - within limits.
 
-I tried with `init` and `loadRemote` but I still get the same error, is there anything I should know?
+So I tried with `init` and `loadRemote` but I still get the same issue, the host version still always takes precedence over the remote version. Is there anything I should be aware of?
 
 I went through this with Yokota on the MF Discord channel: https://discord.com/channels/1055442562959290389/1230213882061262909/1230243060848398539
 

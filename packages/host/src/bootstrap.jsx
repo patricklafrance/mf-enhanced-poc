@@ -8,6 +8,8 @@ import { createRoot } from "react-dom/client";
 import { init, loadRemote } from "@module-federation/enhanced/runtime";
 
 // import { HelloWorld } from "remote1/HelloWorld.jsx";
+
+// import { HelloWorld } from "remote1/HelloWorld.jsx";
 // import { sayHello } from "remote2/sayHello.js";
 
 // const fallbackPlugin = function () {
@@ -20,49 +22,49 @@ import { init, loadRemote } from "@module-federation/enhanced/runtime";
 //   };
 // };
 
-init({
-    name: "host",
-    remotes: [
-        {
-            name: "remote1",
-            entry: "http://localhost:8081/mf-manifest.json"
-        },
-        {
-            name: "remote2",
-            entry: "http://localhost:8082/mf-manifest.json"
-        },
-    ],
-    plugins: [{
-        name: "test-plugin",
-        errorLoadRemote: () => {
-            console.log("error loading remote!")
-        }
-    }]
-    // shared: {
-    //     "react": {
-    //         shareConfig: {
-    //             singleton: true,
-    //             eager: true,
-    //             requiredVersion: "18.2.0"
-    //         }
-    //     },
-    //     "react-dom": {
-    //         shareConfig: {
-    //             singleton: true,
-    //             eager: true,
-    //             requiredVersion: "18.2.0"
-    //         }
-    //     },
-    //     "lodash": {
-    //         shareConfig: {
-    //             singleton: true,
-    //             eager: true,
-    //             requiredVersion: "4.17.21"
-    //         }
+// init({
+//     name: "host",
+//     remotes: [
+//         {
+//             name: "remote1",
+//             entry: "http://localhost:8081/mf-manifest.json"
+//         },
+//         {
+//             name: "remote2",
+//             entry: "http://localhost:8082/mf-manifest.json"
+//         },
+//     ],
+    // plugins: [{
+    //     name: "test-plugin",
+    //     errorLoadRemote: () => {
+    //         console.log("error loading remote!")
     //     }
-    // }
-    // plugins: [fallbackPlugin()]
-});
+    // }]
+//     // shared: {
+//     //     "react": {
+//     //         shareConfig: {
+//     //             singleton: true,
+//     //             eager: true,
+//     //             requiredVersion: "18.2.0"
+//     //         }
+//     //     },
+//     //     "react-dom": {
+//     //         shareConfig: {
+//     //             singleton: true,
+//     //             eager: true,
+//     //             requiredVersion: "18.2.0"
+//     //         }
+//     //     },
+//     //     "lodash": {
+//     //         shareConfig: {
+//     //             singleton: true,
+//     //             eager: true,
+//     //             requiredVersion: "4.17.21"
+//     //         }
+//     //     }
+//     // }
+//     // plugins: [fallbackPlugin()]
+// });
 
 // let HelloWorld;
 
@@ -78,17 +80,19 @@ init({
 //     sayHello = module2.sayHello;
 // }
 
-loadRemote("remote1/HelloWorld.jsx")
-    .then(mod => {
-        console.log("Loaded remote 1", mod);
-    })
-    .catch(() => console.log("Failed to load remote 1"));
+loadRemote("remote1/HelloWorld.jsx").then(mod => console.log("Module loaded!", mod));
 
-loadRemote("remote2/sayHello.js")
-    .then(mod => {
-        console.log("Loaded remote 2", mod);
-    })
-    .catch(() => console.log("Failed to load remote 2"));
+// loadRemote("remote1/HelloWorld.jsx")
+//     .then(mod => {
+//         console.log("Loaded remote 1", mod);
+//     })
+//     .catch(() => console.log("Failed to load remote 1"));
+
+// loadRemote("remote2/sayHello.js")
+//     .then(mod => {
+//         console.log("Loaded remote 2", mod);
+//     })
+//     .catch(() => console.log("Failed to load remote 2"));
 
 const root = createRoot(document.getElementById("root"));
 

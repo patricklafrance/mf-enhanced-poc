@@ -2,6 +2,7 @@
 
 import ModuleFederation from "@module-federation/enhanced/webpack";
 import ReactRefreshWebpackPlugin from "@pmmmwh/react-refresh-webpack-plugin";
+import { createRequire } from 'node:module';
 
 /** @type {import("webpack").Configuration} */
 export default {

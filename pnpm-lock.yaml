@@ -10,6 +10,9 @@ importers:
 
   packages/host:
     dependencies:
+      compare-versions:
+        specifier: 6.1.0
+        version: 6.1.0
       lodash:
         specifier: 4.17.21
         version: 4.17.21
@@ -20,8 +23,8 @@ importers:
         specifier: 18.2.0
         version: 18.2.0(react@18.2.0)
       useless-lib:
-        specifier: 2.1.0
-        version: 2.1.0
+        specifier: 3.0.0
+        version: 3.0.0
     devDependencies:
       '@module-federation/enhanced':
         specifier: 0.1.6
@@ -66,8 +69,8 @@ importers:
         specifier: 18.2.0
         version: 18.2.0(react@18.2.0)
       useless-lib:
-        specifier: 3.0.0
-        version: 3.0.0
+        specifier: 2.1.0
+        version: 2.1.0
     devDependencies:
       '@module-federation/enhanced':
         specifier: 0.1.6
@@ -1242,6 +1245,10 @@ packages:
   /common-path-prefix@3.0.0:
     resolution: {integrity: sha512-QE33hToZseCH3jS0qN96O/bSh3kaw/h+Tq7ngyY9eWDUnTlTNUyqfqvCXioLe5Na5jFsL78ra/wuBU4iuEgd4w==}
     dev: true
+
+  /compare-versions@6.1.0:
+    resolution: {integrity: sha512-LNZQXhqUvqUTotpZ00qLSaify3b4VFD588aRr8MKFw4CMUr98ytzCW5wDH5qx/DEY5kCDXcbcRuCqL0szEf2tg==}
+    dev: false
 
   /compressible@2.0.18:
     resolution: {integrity: sha512-AF3r7P5dWxL8MxyITRMlORQNaOA2IkAFaTr4k7BUumjPtRpGDTZpl0Pb1XCO6JeDCBdp126Cgs9sMxqSjgYyRg==}

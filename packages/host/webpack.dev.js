@@ -69,22 +69,23 @@ export default {
             shared: {
                 "react": {
                     singleton: true,
-                    eager: true
+                    // eager: true
                 },
                 "react-dom": {
                     singleton: true,
-                    eager: true
+                    // eager: true
                 },
                 "lodash": {
                     singleton: true,
-                    eager: true
+                    // eager: true
                 },
                 "useless-lib": {
                     singleton: true,
-                    eager: true
+                    // eager: true
                 }
             },
-            runtimePlugins: [require.resolve("./offlineRemotePlugin.js")]
+            runtimePlugins: [require.resolve("./customShareResolutionStrategyPlugin.js")]
+            // runtimePlugins: [require.resolve("./offlineRemotePlugin.js")]
         }),
         new HtmlWebpackPlugin({
             template: "./public/index.html"

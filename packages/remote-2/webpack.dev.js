@@ -1,6 +1,7 @@
 // ts-check
 
 import ModuleFederation from "@module-federation/enhanced/webpack";
+import { createRequire } from 'node:module';
 
 /** @type {import("webpack").Configuration} */
 export default {

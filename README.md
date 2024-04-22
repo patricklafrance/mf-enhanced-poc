@@ -7,6 +7,22 @@ The template contains 3 applications:
 - A remote module named [remote-1](./packages/remote-1/)
 - A remote module named [remote-2](./packages/remote-2/)
 
+## Instructions for Yokota
+
+1. Install the project with PNPM
+
+2. Start the application from the root of the workspace by executing the `pnpm dev` command. You'll notice in the console that the React application is rendered in about 300ms.
+
+```bash
+loading-time: 343.427978515625 ms
+```
+
+3. Stop the process and go to the `packages/host` project. Then only start the host application by executing the `pnpm dev` command in the `packages/host` folder. You'll notice that it now takes between 2300-2500 ms to render the React application:
+
+```bash
+loading-time: 2365.323974609375 ms
+```
+
 ## Usage
 
 First install the dependencies with PNPM:

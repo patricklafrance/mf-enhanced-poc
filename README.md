@@ -1,8 +1,6 @@
-# wmf-poc-template
+# mf-enhanced-poc
 
-This is a template to create POC related to [Webpack Module Federation](https://webpack.js.org/concepts/module-federation/).
-
-The template contains 3 applications:
+The app contains 3 applications:
 - An [host application](./packages/host/)
 - A remote module named [remote-1](./packages/remote-1/)
 - A remote module named [remote-2](./packages/remote-2/)

@@ -102,8 +102,6 @@ export default function () {
 
                 // Major versions should always be introduced by the host application.
                 if (higherVersionMajor > hostMajor) {
-                    // log("[custom-share-resolution-strategy-plugin] the major number of the higher requested version is higher than the host major version number, reverting to the host version.");
-                    
                     log("[custom-share-resolution-strategy-plugin] the major number of the higher requested version is higher than the major version number of the version requested by the host, looking for another version to resolve to.");
 
                     // Start at the second entry since the first entry is the current higher version entry.

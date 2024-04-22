@@ -19,7 +19,7 @@ remote-2:    2.1   <-----
 
 import { compareVersions } from "compare-versions";
 
-const isDebug = true;
+const isDebug = false;
 
 function log(...args) {
     if (isDebug) {
@@ -31,6 +31,7 @@ function splitSemver(semver) {
     return semver.split(".");
 }
 
+// TODO: the comparison is naive, must be hardened.
 function findHighestVersionForMajor(entries, major) {
     return entries.find(x => {
         return splitSemver(x.version)[0] === major;
@@ -40,6 +41,51 @@ function findHighestVersionForMajor(entries, major) {
 export default function () {
     return {
         name: "custom-share-resolution-strategy-plugin",
+        async beforeRequest(args) {
+            console.log("***** beforeRequest", args);
+
+            const { origin } = args;
+
+            origin.loaderHook.lifecycle.fetch.emit = (url, fetchOptions) => {
+                console.log("*********** fetching: ", url);
+
+                return new Promise((resolve) => {
+                    fetch(url, fetchOptions)
+                        .then((...args) => {
+                            resolve(...args);
+                        })
+                        .catch("********* HEY HO IT FAILED");
+                });
+            };
+
+            // origin.loaderHook.lifecycle.fetch = 
+
+            return args;
+        },
+        // createScript(args) {
+        //     console.log("***** createScript", args);
+
+        //     const { url } = args;
+
+        //     const element = document.createElement("script");
+
+        //     // Adding a timestamp to make sure the remote entry points are never cached.
+        //     // View: https://github.com/module-federation/module-federation-examples/issues/566.
+        //     element.src = `${url}?t=${Date.now()}`;
+        //     element.type = "text/javascript";
+        //     element.async = true;
+            
+        //     element.onerror = error => {
+        //         console.log("************************* failed to load:", url, error);
+        //     };
+
+        //     return element;
+        // },
+        // errorLoadRemote(args) {
+        //     console.log("************** errorLoadRemote", args);
+
+        //     return args;
+        // },
         resolveShare(args) {
             const { shareScopeMap, scope, pkgName, version } = args;
 
@@ -100,12 +146,14 @@ export default function () {
                 const [higherVersionMajor] = splitSemver(higherVersionEntry.version);
                 const [hostMajor] = splitSemver(hostEntry.version)[0];
 
+                // TODO: this is to naive as a semver version can includes hyphens and other caracters.
+                // TODO: looks at MF semver utils
                 // Major versions should always be introduced by the host application.
                 if (higherVersionMajor > hostMajor) {
                     log("[custom-share-resolution-strategy-plugin] the major number of the higher requested version is higher than the major version number of the version requested by the host, looking for another version to resolve to.");
 
                     // Start at the second entry since the first entry is the current higher version entry.
-                    // The result could be either be the actual host entry or any other entry that is higher than the version requested
+                    // The result could either be the actual host entry or any other entry that is higher than the version requested
                     // by the host, but match the host entry major version number.
                     const fallbackEntry = findHighestVersionForMajor(sortedEntries.splice(1), hostMajor);
 

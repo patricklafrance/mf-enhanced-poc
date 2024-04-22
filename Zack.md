@@ -116,7 +116,7 @@ It also works as expected with `ModuleFederationPlugin` when there's a failed at
 loadRemote("remote1/HelloWorld.jsx").then(mod => console.log("Module loaded!", mod));
 ```
 
-However, when using ``ModuleFederationPlugin` and the remote is configured with `mf-manifest.json` as an entry point, the `errorLoadRemote` hook is NOT called:
+However, when using `ModuleFederationPlugin` and the remote is configured with `mf-manifest.json` as an entry point, the `errorLoadRemote` hook is NOT called:
 
 ```js webpack.config.js
 import ModuleFederation from "@module-federation/enhanced/webpack";

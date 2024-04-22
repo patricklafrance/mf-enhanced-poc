@@ -64,7 +64,7 @@ export default function () {
             }
 
             args.resolver = () => {
-                log(`[custom-share-resolution-strategy-plugin] there's more than one requested version for ${pkgName}:`, entries.length, shareScopeMap[scope][pkgName]);
+                log(`%c[custom-share-resolution-strategy-plugin] there's more than one requested version for ${pkgName}:`, "color: black; background-color: yellow;", entries.length, shareScopeMap[scope][pkgName],);
 
                 // From higher to lower versions.
                 const sortedEntries = entries
@@ -79,7 +79,7 @@ export default function () {
 
                 // The host is always right!
                 if (higherVersionEntry.from === "host") {
-                    log(`[custom-share-resolution-strategy-plugin] this is the host version, great, resolving to:`, higherVersionEntry.version, higherVersionEntry);
+                    log(`%c[custom-share-resolution-strategy-plugin] this is the host version, great, resolving to:`, "color: black; background-color: yellow;", higherVersionEntry.version, higherVersionEntry);
 
                     return higherVersionEntry;
                 }
@@ -90,7 +90,7 @@ export default function () {
 
                 // Found nothing, that's odd but let's not break the app for this.
                 if (!hostEntry) {
-                    log(`[custom-share-resolution-strategy-plugin] the host is not requesting any version of ${pkgName}, aborting.`);
+                    log(`%c[custom-share-resolution-strategy-plugin] the host is not requesting any version of ${pkgName}, aborting.`, "color: black; background-color: yellow;");
 
                     return higherVersionEntry;
                 }
@@ -109,8 +109,8 @@ export default function () {
                     // by the host, but match the host entry major version number.
                     const fallbackEntry = findHighestVersionForMajor(sortedEntries.splice(1), hostMajor);
 
-                    log(`[custom-share-resolution-strategy-plugin] the highest request version for ${pkgName} that is in-range with the requested host major version number is:`, fallbackEntry.version, fallbackEntry);
-                    log(`[custom-share-resolution-strategy-plugin] reverting to:`, fallbackEntry.version);
+                    log(`%c[custom-share-resolution-strategy-plugin] the highest request version for ${pkgName} that is in-range with the requested host major version number is:`, "color: black; background-color: yellow;", fallbackEntry.version, fallbackEntry);
+                    log(`%c[custom-share-resolution-strategy-plugin] reverting to:`, "color: black; background-color: yellow;", fallbackEntry.version);
 
                     return fallbackEntry;
                 }

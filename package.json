@@ -6,8 +6,6 @@
   "type": "module",
   "scripts": {
     "dev": "pnpm -r --parallel dev",
-    "build": "pnpm -r --parallel build",
-    "serve-build": "pnpm -r -parallel serve-build",
     "reset": "pnpm run \"/^reset:.*/\"",
     "reset:node-modules": "pnpm -r --include-workspace-root --parallel exec pnpm dlx rimraf node_modules",
     "reset:lock-file": "pnpm dlx rimraf pnpm-lock.yaml",

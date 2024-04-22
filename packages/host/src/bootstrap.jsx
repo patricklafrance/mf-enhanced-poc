@@ -1,5 +1,7 @@
 // @ts-check
 
+import { timeEnd } from "./performance.js";
+
 console.log("************* bootstrap.jsx");
 
 import { App } from "./App.jsx";
@@ -20,6 +22,8 @@ loadRemote("remote2/sayHello.js")
     .catch(() => console.log("Failed to load remote 2"));
 
 const root = createRoot(document.getElementById("root"));
+
+timeEnd();
 
 root.render(
     <StrictMode>

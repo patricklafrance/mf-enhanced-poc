@@ -23,8 +23,8 @@ importers:
         specifier: 18.2.0
         version: 18.2.0(react@18.2.0)
       useless-lib:
-        specifier: 3.0.0
-        version: 3.0.0
+        specifier: 2.0.0
+        version: 2.0.0
     devDependencies:
       '@module-federation/enhanced':
         specifier: 0.1.6
@@ -69,8 +69,8 @@ importers:
         specifier: 18.2.0
         version: 18.2.0(react@18.2.0)
       useless-lib:
-        specifier: 2.1.0
-        version: 2.1.0
+        specifier: 3.0.0
+        version: 3.0.0
     devDependencies:
       '@module-federation/enhanced':
         specifier: 0.1.6
@@ -109,8 +109,8 @@ importers:
         specifier: 18.2.0
         version: 18.2.0(react@18.2.0)
       useless-lib:
-        specifier: 2.0.1
-        version: 2.0.1
+        specifier: 2.1.0
+        version: 2.1.0
     devDependencies:
       '@module-federation/enhanced':
         specifier: 0.1.6
@@ -3545,8 +3545,8 @@ packages:
     resolution: {integrity: sha512-jk1+QP6ZJqyOiuEI9AEWQfju/nB2Pw466kbA0LEZljHwKeMgd9WrAEgEGxjPDD2+TNbbb37rTyhEfrCXfuKXnA==}
     dev: true
 
-  /useless-lib@2.0.1:
-    resolution: {integrity: sha512-2IBLwhqsUIJADm1etOzG+lZDFyTGMi3/ywkRY+tYFt169He6XoIXaLprYYXV1eGho5OeiteBa8QmQfikyR3NmA==}
+  /useless-lib@2.0.0:
+    resolution: {integrity: sha512-hc3romfbxk/4fU+cEYJPT6b8YhxEuwmF7fpbAV0J40HXarYcbH1aR5lgmS6YIRosEbIRS1ou3CDUVewVDDe/dg==}
     dev: false
 
   /useless-lib@2.1.0:

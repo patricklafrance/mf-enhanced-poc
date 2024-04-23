@@ -9,7 +9,8 @@
   "scripts": {
     "dev": "webpack serve --config webpack.dev.js",
     "build": "webpack --config webpack.build.js",
-    "serve-build": "pnpm build && pnpm http-server dist -p 8080 -P http://localhost:8080?"
+    "serve-build": "pnpm build && pnpm http-server dist -p 8080 -P http://localhost:8080?",
+    "deploy-netlify": "pnpm build && netlify deploy --dir=packages/host/dist --site=b38e3c2d-31c9-4b9b-847a-4365c6b926c8 --prod"
   },
   "keywords": [],
   "author": "",
@@ -28,6 +29,7 @@
     "@swc/core": "1.4.14",
     "html-webpack-plugin": "5.6.0",
     "http-server": "14.1.1",
+    "netlify-cli": "17.22.1",
     "swc-loader": "0.2.6",
     "webpack": "5.91.0",
     "webpack-cli": "5.1.4",

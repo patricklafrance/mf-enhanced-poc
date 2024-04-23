@@ -30,7 +30,7 @@ export default {
     entry: "./src/index.js",
     output: {
         // The trailing / is very important, otherwise paths will ne be resolved correctly.
-        publicPath: "http://localhost:8080/",
+        publicPath: "auto",
         uniqueName: "host-app"
     },
     module: {

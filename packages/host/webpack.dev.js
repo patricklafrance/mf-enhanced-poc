@@ -7,16 +7,6 @@ import { createRequire } from 'node:module';
 
 const require = createRequire(import.meta.url);
 
-const fallbackPlugin = function () {
-  return {
-    name: 'fallback-plugin',
-    errorLoadRemote(args) {
-      const fallback = 'fallback';
-      return fallback;
-    },
-  };
-};
-
 /** @type {import("webpack").Configuration} */
 export default {
     mode: "development",

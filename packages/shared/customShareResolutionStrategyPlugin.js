@@ -90,7 +90,7 @@ export default function () {
 
             log(`[custom-share-resolution-strategy-plugin] resolving ${pkgName}:`, args);
 
-            // This custom strategies only applies to singleton shared dependencies.
+            // This custom strategy only applies to singleton shared dependencies.
             const entries = Object.values(shareScopeMap[scope][pkgName]).filter(x => x.shareConfig.singleton);
 
             // Not a singleton dependency.

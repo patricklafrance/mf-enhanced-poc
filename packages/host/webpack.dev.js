@@ -84,7 +84,7 @@ export default {
                     eager: true
                 }
             },
-            runtimePlugins: [require.resolve("./customShareResolutionStrategyPlugin.js")]
+            runtimePlugins: [require.resolve("../shared/customShareResolutionStrategyPlugin.js")]
             // runtimePlugins: [require.resolve("./offlineRemotePlugin.js")]
         }),
         new HtmlWebpackPlugin({

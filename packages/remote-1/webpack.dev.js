@@ -4,6 +4,8 @@ import ModuleFederation from "@module-federation/enhanced/webpack";
 import ReactRefreshWebpackPlugin from "@pmmmwh/react-refresh-webpack-plugin";
 import { createRequire } from 'node:module';
 
+const require = createRequire(import.meta.url);
+
 /** @type {import("webpack").Configuration} */
 export default {
     mode: "development",
@@ -65,7 +67,8 @@ plugins: [
             "useless-lib": {
                 singleton: true
             }
-        }
+        },
+        runtimePlugins: [require.resolve("../shared/customShareResolutionStrategyPlugin.js")]
     }),
     new ReactRefreshWebpackPlugin()
 ]

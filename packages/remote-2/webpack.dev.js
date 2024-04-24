@@ -3,6 +3,8 @@
 import ModuleFederation from "@module-federation/enhanced/webpack";
 import { createRequire } from 'node:module';
 
+const require = createRequire(import.meta.url);
+
 /** @type {import("webpack").Configuration} */
 export default {
     mode: "development",
@@ -58,7 +60,8 @@ export default {
                 "useless-lib": {
                     singleton: true
                 }
-            }
+            },
+            runtimePlugins: [require.resolve("../shared/customShareResolutionStrategyPlugin.js")]
         })
     ]
 };

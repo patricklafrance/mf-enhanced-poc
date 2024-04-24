@@ -10,9 +10,6 @@ importers:
 
   packages/host:
     dependencies:
-      compare-versions:
-        specifier: 6.1.0
-        version: 6.1.0
       lodash:
         specifier: 4.17.21
         version: 4.17.21
@@ -23,8 +20,8 @@ importers:
         specifier: 18.2.0
         version: 18.2.0(react@18.2.0)
       useless-lib:
-        specifier: 2.0.0
-        version: 2.0.0
+        specifier: ^2.0.0
+        version: 2.1.0
     devDependencies:
       '@module-federation/enhanced':
         specifier: 0.1.6
@@ -133,6 +130,12 @@ importers:
       webpack-dev-server:
         specifier: 5.0.4
         version: 5.0.4(webpack-cli@5.1.4)(webpack@5.91.0)
+
+  packages/shared:
+    dependencies:
+      semver:
+        specifier: 7.6.0
+        version: 7.6.0
 
 packages:
 
@@ -1245,10 +1248,6 @@ packages:
   /common-path-prefix@3.0.0:
     resolution: {integrity: sha512-QE33hToZseCH3jS0qN96O/bSh3kaw/h+Tq7ngyY9eWDUnTlTNUyqfqvCXioLe5Na5jFsL78ra/wuBU4iuEgd4w==}
     dev: true
-
-  /compare-versions@6.1.0:
-    resolution: {integrity: sha512-LNZQXhqUvqUTotpZ00qLSaify3b4VFD588aRr8MKFw4CMUr98ytzCW5wDH5qx/DEY5kCDXcbcRuCqL0szEf2tg==}
-    dev: false
 
   /compressible@2.0.18:
     resolution: {integrity: sha512-AF3r7P5dWxL8MxyITRMlORQNaOA2IkAFaTr4k7BUumjPtRpGDTZpl0Pb1XCO6JeDCBdp126Cgs9sMxqSjgYyRg==}
@@ -2529,7 +2528,6 @@ packages:
     engines: {node: '>=10'}
     dependencies:
       yallist: 4.0.0
-    dev: true
 
   /luxon@1.28.1:
     resolution: {integrity: sha512-gYHAa180mKrNIUJCbwpmD0aTu9kV0dREDrwNnuyFAsO1Wt0EVYSZelPnJlbj9HplzXX/YWXHFTL45kvZ53M0pw==}
@@ -3126,7 +3124,6 @@ packages:
     hasBin: true
     dependencies:
       lru-cache: 6.0.0
-    dev: true
 
   /send@0.18.0:
     resolution: {integrity: sha512-qqWzuOjSFOuqPjFe4NOsMLafToQQwBSOEpS+FwEt3A2V3vKubTquT3vmLTQpFgMXp8AlFWFuP1qKaJZOtPpVXg==}
@@ -3545,10 +3542,6 @@ packages:
     resolution: {integrity: sha512-jk1+QP6ZJqyOiuEI9AEWQfju/nB2Pw466kbA0LEZljHwKeMgd9WrAEgEGxjPDD2+TNbbb37rTyhEfrCXfuKXnA==}
     dev: true
 
-  /useless-lib@2.0.0:
-    resolution: {integrity: sha512-hc3romfbxk/4fU+cEYJPT6b8YhxEuwmF7fpbAV0J40HXarYcbH1aR5lgmS6YIRosEbIRS1ou3CDUVewVDDe/dg==}
-    dev: false
-
   /useless-lib@2.1.0:
     resolution: {integrity: sha512-HxMJ/lOLgSDcQNkI0niuCKzft4IfFy/jyF0ovmEpZvI35zSu+cytwUvj5yRfEM94ABFcpIk96BGojv0QwXFm6A==}
     dev: false
@@ -3858,7 +3851,6 @@ packages:
 
   /yallist@4.0.0:
     resolution: {integrity: sha512-3wdGidZyq5PB084XLES5TpOSRA3wjXAlIWMhum2kRcv/41Sn2emQ0dycQW4uZXLejwKvg6EsvbdlVL+FYEct7A==}
-    dev: true
 
   /ylru@1.4.0:
     resolution: {integrity: sha512-2OQsPNEmBCvXuFlIni/a+Rn+R2pHW9INm0BxXJ4hVDA8TirqMj+J/Rp9ItLatT/5pZqWwefVrTQcHpixsxnVlA==}

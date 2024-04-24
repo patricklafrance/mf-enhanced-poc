@@ -13,13 +13,13 @@ await loadRemote("remote1/HelloWorld.jsx")
     .then(mod => {
         console.log("Loaded remote 1", mod);
     })
-    .catch(() => console.log("Failed to load remote 1"));
+    .catch((error) => console.log("Failed to load remote 1", error));
 
 await loadRemote("remote2/sayHello.js")
     .then(mod => {
         console.log("Loaded remote 2", mod);
     })
-    .catch(() => console.log("Failed to load remote 2"));
+    .catch((error) => console.log("Failed to load remote 2", error));
 
 timeEnd();
 

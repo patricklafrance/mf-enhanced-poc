@@ -40,51 +40,6 @@ function findHighestVersionForMajor(entries, major) {
 export default function () {
     return {
         name: "custom-share-resolution-strategy-plugin",
-        // async beforeRequest(args) {
-        //     console.log("***** beforeRequest", args);
-
-        //     const { origin } = args;
-
-        //     origin.loaderHook.lifecycle.fetch.emit = (url, fetchOptions) => {
-        //         console.log("*********** fetching: ", url);
-
-        //         return new Promise((resolve) => {
-        //             fetch(url, fetchOptions)
-        //                 .then((...args) => {
-        //                     resolve(...args);
-        //                 })
-        //                 .catch("********* HEY HO IT FAILED");
-        //         });
-        //     };
-
-        //     // origin.loaderHook.lifecycle.fetch = 
-
-        //     return args;
-        // },
-        // createScript(args) {
-        //     console.log("***** createScript", args);
-
-        //     const { url } = args;
-
-        //     const element = document.createElement("script");
-
-        //     // Adding a timestamp to make sure the remote entry points are never cached.
-        //     // View: https://github.com/module-federation/module-federation-examples/issues/566.
-        //     element.src = `${url}?t=${Date.now()}`;
-        //     element.type = "text/javascript";
-        //     element.async = true;
-            
-        //     element.onerror = error => {
-        //         console.log("************************* failed to load:", url, error);
-        //     };
-
-        //     return element;
-        // },
-        // errorLoadRemote(args) {
-        //     console.log("************** errorLoadRemote", args);
-
-        //     return args;
-        // },
         resolveShare(args) {
             const { shareScopeMap, scope, pkgName, version } = args;
 

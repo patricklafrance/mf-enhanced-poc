@@ -60,8 +60,7 @@ export default {
                 "useless-lib": {
                     singleton: true
                 }
-            },
-            runtimePlugins: [require.resolve("../shared/customShareResolutionStrategyPlugin.js")]
+            }
         })
     ]
 };

@@ -61,8 +61,7 @@ export default {
                     singleton: true,
                     eager: true
                 }
-            },
-            runtimePlugins: [require.resolve("./customShareResolutionStrategyPlugin.js")]
+            }
         }),
         new HtmlWebpackPlugin({
             template: "./public/index.html"

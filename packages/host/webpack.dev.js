@@ -75,8 +75,7 @@ export default {
                 }
             },
             runtimePlugins: [
-                require.resolve("../shared/customShareResolutionStrategyPlugin.js"),
-                require.resolve("./createScriptWithTimeoutPlugin.js")
+                require.resolve("./customPlugin.js")
             ]
         }),
         new HtmlWebpackPlugin({

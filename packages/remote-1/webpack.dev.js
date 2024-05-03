@@ -67,8 +67,7 @@ plugins: [
             "useless-lib": {
                 singleton: true
             }
-        },
-        runtimePlugins: [require.resolve("../shared/customShareResolutionStrategyPlugin.js")]
+        }
     }),
     new ReactRefreshWebpackPlugin()
 ]
